@@ -10,13 +10,14 @@ const Stack = createNativeStackNavigator();
 
 const MainNavigator = () => {
   const {connectSocket} = useSocketStore();
-  const {subscribeToNewMessage} = useChatStore();
+  const {subscribeToNewMessage, subscribeToTyping} = useChatStore();
 
   useEffect(() => {
     connectSocket();
 
     setTimeout(() => {
       subscribeToNewMessage();
+      subscribeToTyping();
     }, 500);
   }, []);
   return (
